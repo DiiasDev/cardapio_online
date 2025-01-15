@@ -56,28 +56,33 @@
                 </v-col>
 
                 <!-- Ícone de carrinho -->
-                <v-col class="d-flex justify-center align-center" cols="auto">
-                    <v-icon icon="mdi-cart" style="font-size: 32px; color: #FF5722;"></v-icon>
+                <v-col class="d-flex justify-center align-center mr-2" cols="auto">
+                    <v-icon @click="openModalCart" icon="mdi-cart" style="font-size: 32px; color: #FF5722;"></v-icon>
                 </v-col>
             </v-row>
         </v-card>
     </div>
+    <modalCarrinho/>
 </template>
 
 <script>
+import {store} from '../stores/app'
 export default {
-    name: 'AppNavbar',
-    data() {
-        return {
-
-        }
-    },
-    methods: {
-        pesquisar(event) {
-            console.log("Clicou em pesquisar");
-            let target = event.target;
-            console.log(target.value);
-        }
+  name: 'AppNavbar',
+  computed: {
+    // Acessando a store diretamente
+    useAppStore() {
+      return store.state;
     }
+  },
+  methods: {
+    openModalCart() {
+      console.log("Clicou no carrinho");
+      this.useAppStore.modal_carrinho = true
+    }
+  }
 }
 </script>
+
+
+
