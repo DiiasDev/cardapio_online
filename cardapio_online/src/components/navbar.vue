@@ -66,20 +66,23 @@
 </template>
 
 <script>
-import {store} from '../stores/app'
+import store from '../stores/app'
+import modalCarrinho from './modals/modal_carrinho.vue'
 export default {
+    components:{
+        modalCarrinho
+    },
   name: 'AppNavbar',
   computed: {
-    // Acessando a store diretamente
     useAppStore() {
-      return store.state;
+      return store;
     }
   },
   methods: {
     openModalCart() {
-      console.log("Clicou no carrinho");
-      this.useAppStore.modal_carrinho = true
-    }
+        console.log("ABRIU CART");
+        this.useAppStore.state.modal_carrinho = true;
+  }
   }
 }
 </script>
