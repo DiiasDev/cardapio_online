@@ -20,6 +20,7 @@
             @click="fecharModal"
             style="font-weight: 500; color: #007bff; text-transform: none; padding: 8px 16px;"
           >
+          
             Fechar
           </v-btn>
         </v-card-actions>
