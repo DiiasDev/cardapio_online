@@ -1,6 +1,6 @@
 <template>
     <!-- Navbar com ícone do menu e carrinho -->
-    <v-row>
+    <v-row v-if="useAppStore.state.isLoggedIn">
         <v-col>
             <v-card>
                 <v-app-bar color="primary" prominent>
@@ -50,7 +50,7 @@
                                 <v-col cols="auto" class="mr-3">
                                     <v-list-item-avatar>
                                         <v-img
-                                            :src="'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4ofoTBXuTH92-2fDUsDUD01vpGhQmsAQP8Q&s' || 'https://static.vecteezy.com/ti/vetor-gratis/t2/2318271-icone-do-perfil-do-usuario-vetor.jpg'"
+                                            :src="'https://cdn-icons-png.flaticon.com/512/3135/3135768.png' || 'https://static.vecteezy.com/ti/vetor-gratis/t2/2318271-icone-do-perfil-do-usuario-vetor.jpg'"
                                             alt="Perfil" height="50" width="50" class="rounded-circle" />
                                     </v-list-item-avatar>
                                 </v-col>
@@ -60,7 +60,8 @@
                                     <v-list-item-content>
                                         <v-list-item-title
                                             class="font-weight-bold text-h6 mb-0">User</v-list-item-title>
-                                        <v-list-item-subtitle class="text-caption mt-1">
+                                        <v-list-item-subtitle v-if="login == true" v-model="login"
+                                            class="text-caption mt-1">
                                             <span style="color: #1976D2; cursor: pointer;">Editar Perfil</span>
                                         </v-list-item-subtitle>
                                     </v-list-item-content>
@@ -107,10 +108,16 @@
                         <v-divider class="my-4"></v-divider>
 
                         <!-- Botão de Logout -->
-                        <v-list-item>
+                        <v-list-item v-if="login == true">
                             <v-btn block color="red" dark>
-                                <v-icon left>mdi-logout</v-icon>
+                                <v-icon left class="mr-2">mdi-logout</v-icon>
                                 Sair
+                            </v-btn>
+                        </v-list-item>
+                        <v-list-item v-else>
+                            <v-btn @click="loginUser" class="mt-2" block color="blue" dark>
+                                <v-icon left class="mr-2">mdi-login</v-icon>
+                                Entrar
                             </v-btn>
                         </v-list-item>
                     </v-list>
@@ -159,8 +166,15 @@ export default {
         modalCarrinho
     },
     name: 'AppNavbar',
+    props: {
+        isLoggedIn: {
+            type: Boolean,
+            required: true
+        }
+    },
     data() {
         return {
+            login: false,
             display: useDisplay(),
             drawer: false,
             group: null,
@@ -179,6 +193,10 @@ export default {
         pesquisar() {
             console.log("PESQUISAR");
             // Add your search logic here
+        },
+        loginUser() {
+            console.log("LOGIN");
+            this.useAppStore.state.isLoggedIn = false;
         }
     }
 }

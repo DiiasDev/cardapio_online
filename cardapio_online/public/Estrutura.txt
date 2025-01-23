@@ -28,33 +28,33 @@ Carrinho de compras que exibe os itens da categoria selecionada.
 
 2. Configuração do Ambiente
 
-2.1. Instalação das ferramentas básicas:
+2.1. Instalação das ferramentas básicas: OK
 
-Instale o Node.js para gerenciar pacotes e dependências.
+Instale o Node.js para gerenciar pacotes e dependências. ok 
 
-Instale o Vue CLI para criar e gerenciar projetos Vue.
+Instale o Vue CLI para criar e gerenciar projetos Vue. OK
 
-2.2. Criação do projeto Vue:
+2.2. Criação do projeto Vue: OK
 
 Use o Vue CLI para criar o projeto. Escolha as opções que incluam Babel, Router, Vuex, TypeScript e outras ferramentas necessárias.
 
-2.3. Instalação do Vuetify:
+2.3. Instalação do Vuetify: OK
 
-Adicione Vuetify ao projeto para utilizar os componentes prontos e estilizados.
+Adicione Vuetify ao projeto para utilizar os componentes prontos e estilizados. OK
 
-3. Estrutura do Projeto
+3. Estrutura do Projeto OK
 
-Diretórios principais:
+Diretórios principais: OK
 
-components/: Para os componentes reutilizáveis (ex.: Navbar, Sidebar, Cards).
+components/: Para os componentes reutilizáveis (ex.: Navbar, Sidebar, Cards). OK
 
-views/: Para as páginas principais (ex.: Cardápio, Perfil, Relatório).
+views/: Para as páginas principais (ex.: Cardápio, Perfil, Relatório). OK
 
-store/: Para a lógica centralizada usando Vuex com TypeScript.
+store/: Para a lógica centralizada usando Vuex com TypeScript. OK
 
-assets/: Para imagens e arquivos estáticos.
+assets/: Para imagens e arquivos estáticos. OK
 
-router/: Configuração das rotas do projeto.
+router/: Configuração das rotas do projeto. OK
 
 4. Funcionalidades Detalhadas
 
@@ -78,9 +78,9 @@ Detalhes: Utilize uma barra superior com botões ou menus dropdown.
 
 4.4. Barra lateral:
 
-Descrição: Contém links para perfil, últimos pedidos, informações e relatório.
+Descrição: Contém links para perfil, últimos pedidos, informações e relatório. OK
 
-Detalhes: Adicione uma navegação lateral com seções organizadas.
+Detalhes: Adicione uma navegação lateral com seções organizadas. OK 
 
 4.5. Carrinho de compras:
 
