@@ -5,6 +5,7 @@ const store = createStore({
     modal_carrinho: false, // Define o estado inicial
     modal_cadastro: false,
     isLoggedIn: true,
+    selectedRelatorio: false
   }),
   getters: {
     // Getter para acessar o estado do modal

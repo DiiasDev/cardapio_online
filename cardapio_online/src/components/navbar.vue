@@ -75,31 +75,22 @@
                             <v-list-item-group>
                                 <!-- Item 1 -->
                                 <v-list-item>
-                                    <v-list-item-icon class="d-flex align-center">
-                                        <v-icon color="primary" class="me-2">mdi-information</v-icon>
-                                    </v-list-item-icon>
                                     <v-list-item-content>
-                                        <v-list-item-title>Informações</v-list-item-title>
+                                        <v-list-item-title @click="openInfo">Informações</v-list-item-title>
                                     </v-list-item-content>
                                 </v-list-item>
 
                                 <!-- Item 2 -->
                                 <v-list-item>
-                                    <v-list-item-icon class="d-flex align-center">
-                                        <v-icon color="primary" class="me-2">mdi-history</v-icon>
-                                    </v-list-item-icon>
                                     <v-list-item-content>
-                                        <v-list-item-title>Últimos Pedidos</v-list-item-title>
+                                        <v-list-item-title @click="openUltimosPedidos">Últimos Pedidos</v-list-item-title>
                                     </v-list-item-content>
                                 </v-list-item>
 
                                 <!-- Item 3 -->
                                 <v-list-item>
-                                    <v-list-item-icon class="d-flex align-center">
-                                        <v-icon color="primary" class="me-2">mdi-file-document-box</v-icon>
-                                    </v-list-item-icon>
                                     <v-list-item-content>
-                                        <v-list-item-title>Relatório</v-list-item-title>
+                                        <v-list-item-title v-model="useAppStore.state.selectedRelatorio">Relatório</v-list-item-title>
                                     </v-list-item-content>
                                 </v-list-item>
                             </v-list-item-group>
@@ -197,7 +188,13 @@ export default {
         loginUser() {
             console.log("LOGIN");
             this.useAppStore.state.isLoggedIn = false;
-        }
+        },
+        openInfo(){
+            console.log("Clicou em informações")
+        },
+        openUltimosPedidos(){
+            console.log("clicou em Ultimos pedidos")
+        },
     }
 }
 </script>
