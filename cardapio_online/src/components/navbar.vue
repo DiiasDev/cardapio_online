@@ -76,21 +76,23 @@
                                 <!-- Item 1 -->
                                 <v-list-item>
                                     <v-list-item-content>
-                                        <v-list-item-title @click="openInfo">Informações</v-list-item-title>
+                                        <v-list-item-title @click="openModalInfo">Informações</v-list-item-title>
                                     </v-list-item-content>
                                 </v-list-item>
 
                                 <!-- Item 2 -->
                                 <v-list-item>
                                     <v-list-item-content>
-                                        <v-list-item-title @click="openUltimosPedidos">Últimos Pedidos</v-list-item-title>
+                                        <v-list-item-title @click="openUltimosPedidos">Últimos
+                                            Pedidos</v-list-item-title>
                                     </v-list-item-content>
                                 </v-list-item>
 
                                 <!-- Item 3 -->
                                 <v-list-item>
                                     <v-list-item-content>
-                                        <v-list-item-title v-model="useAppStore.state.selectedRelatorio">Relatório</v-list-item-title>
+                                        <v-list-item-title v-model="useAppStore.state.selectedRelatorio"
+                                            @click="openRelatorio">Relatório</v-list-item-title>
                                     </v-list-item-content>
                                 </v-list-item>
                             </v-list-item-group>
@@ -117,16 +119,20 @@
 
 
             <!-- Barra de pesquisa -->
-
             <v-row>
                 <!-- Ícone de pesquisa e campo de entrada -->
-                <v-col cols="12" xl="12" lg="12" md="10" sm="12" xs="12" class="d-flex justify-center">
+                <v-col cols="12" class="d-flex justify-center">
                     <v-card class="d-flex justify-center align-center pa-4 mt-2"
                         :style="display.xs ? 'width: 100%; max-width: 600px; border-radius: 8px;' : 'width: 50%; border-radius: 8px;'">
-                        <v-icon v-if="!display.xs" icon="mdi-magnify" style="font-size: 32px; color: #FF5722;"></v-icon>
-                        <input type="text" placeholder="Pesquisar..." @click="pesquisar" class="ma-2"
-                            :style="!display.xs ? 'flex: 1; padding: 8px 12px; font-size: 16px; border-radius: 8px; border: 2px solid #FF5722;' : ' flex: 1; padding: 8px 12px; font-size: 16px; border-radius: 8px; border: 2px solid #FF5722;'" />
 
+                        <!-- Ícone de pesquisa apenas em telas maiores -->
+                        <v-icon v-if="!display.xs" icon="mdi-magnify" style="font-size: 32px; color: #FF5722;"></v-icon>
+
+                        <!-- Campo de pesquisa -->
+                        <input type="text" placeholder="Pesquisar..." @click="pesquisar" class="ma-2"
+                            :style="!display.xs ? 'flex: 1; padding: 8px 12px; font-size: 16px; border-radius: 8px; border: 2px solid #FF5722;' : 'flex: 1; padding: 8px 12px; font-size: 16px; border-radius: 8px; border: 2px solid #FF5722;'" />
+
+                        <!-- Botão de pesquisa -->
                         <v-btn @click="pesquisar" color="orange"
                             style="font-weight: bold; text-transform: none; padding: 10px 20px; border-radius: 8px;">
                             Pesquisar
@@ -141,20 +147,26 @@
 
 
 
+
         </v-col>
     </v-row>
 
-
+    <informacoesVue/>
     <modalCarrinho />
+    <ultimosPedidos/>
 </template>
 
 <script>
 import store from '../stores/app'
 import modalCarrinho from './modals/modal_carrinho.vue'
+import informacoesVue from './modals/informacoes.vue'
+import ultimosPedidos from './modals/modal_ultimos_pedidos.vue'
 import { useDisplay } from 'vuetify';
 export default {
     components: {
-        modalCarrinho
+        modalCarrinho,
+        informacoesVue,
+        ultimosPedidos
     },
     name: 'AppNavbar',
     props: {
@@ -177,24 +189,31 @@ export default {
         }
     },
     methods: {
+        openModalInfo(){
+            this.useAppStore.state.modal_informacoes = true;
+        },
         openModalCart() {
             console.log("ABRIU CART");
             this.useAppStore.state.modal_carrinho = true;
-        },
-        pesquisar() {
-            console.log("PESQUISAR");
-            // Add your search logic here
         },
         loginUser() {
             console.log("LOGIN");
             this.useAppStore.state.isLoggedIn = false;
         },
-        openInfo(){
-            console.log("Clicou em informações")
+        openUltimosPedidos() {
+            console.log("clicou em Ultimos pedidos");
+            this.useAppStore.state.modal_ultimos_pedidos = true
         },
-        openUltimosPedidos(){
-            console.log("clicou em Ultimos pedidos")
+        openRelatorio() {
+            console.log("clicou em relatorio");
+            this.useAppStore.commit('setSelectedOption', 'relatorio');  // Atualiza a opção selecionada para 'relatorio'
+            this.useAppStore.state.selectedRelatorio = true;  // Marca o relatório como selecionado
         },
+        pesquisar() {
+            console.log("PESQUISAR");
+            // Add your search logic here
+        },
+
     }
 }
 </script>
