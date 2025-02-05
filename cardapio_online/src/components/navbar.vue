@@ -129,7 +129,7 @@
                         <v-icon v-if="!display.xs" icon="mdi-magnify" style="font-size: 32px; color: #FF5722;"></v-icon>
 
                         <!-- Campo de pesquisa -->
-                        <input type="text" placeholder="Pesquisar..." @click="pesquisar" class="ma-2"
+                        <input type="text" placeholder="Pesquisar..." v-model="digitado" @input="pesquisar" class="ma-2"
                             :style="!display.xs ? 'flex: 1; padding: 8px 12px; font-size: 16px; border-radius: 8px; border: 2px solid #FF5722;' : 'flex: 1; padding: 8px 12px; font-size: 16px; border-radius: 8px; border: 2px solid #FF5722;'" />
 
                         <!-- Botão de pesquisa -->
@@ -181,6 +181,7 @@ export default {
             display: useDisplay(),
             drawer: false,
             group: null,
+            digitado: ''
         }
     },
     computed: {
@@ -211,7 +212,8 @@ export default {
         },
         pesquisar() {
             console.log("PESQUISAR");
-            // Add your search logic here
+            this.digitado 
+            console.log('pesquisou', this.digitado)
         },
 
     }
